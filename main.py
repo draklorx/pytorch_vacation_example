@@ -2,9 +2,23 @@ import numpy
 import torch
 import random
 import json
+import nltk
 from vacation_functions import find_vacation_by_weather, find_vacation_by_activity
 from train import train, ChatModel
 from tools import get_pattern_words, get_labels, create_data, create_vector
+
+# Check if punkt and punkt_tab are already downloaded before downloading
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    print("Downloading punkt...")
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    print("Downloading punkt_tab...")
+    nltk.download('punkt_tab')
 
 with open("intents.json") as file:
     data = json.load(file)
