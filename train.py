@@ -39,7 +39,7 @@ def train(model, training, output):
         outputs = model(X_train)
         
         # Calculate loss and backward pass
-        loss = criterion(outputs, y_train_indices)  # ✅ Now using indices!
+        loss = criterion(outputs, y_train_indices)
         loss.backward()
         
         # Update weights
