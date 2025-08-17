@@ -31,11 +31,7 @@ It also saves wrong answers with predicted category in a text file named as 'exc
 
 3.  **Download NLTK data:**
 
-    After installation, you need to download the 'punkt' tokenizer from NLTK. Run this command in your terminal:
-
-    ```shell
-    python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab')"
-    ```
+    The application should automatically install nltk punkt and punkt_tab data on its first run.
 
 NOTE: This json dataset is taken from the internet, credits to the creator
 
