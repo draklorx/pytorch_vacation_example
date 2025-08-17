@@ -48,3 +48,13 @@ The main core of the application. Determines which reply to display, and which f
 
 vacation_functions.py
 Functions to tailor output based on user selection and the current session_state
+
+## NOTES:
+
+I spent most of this week learning pytorch fundamentals and more at a low level how neural networks work
+
+The SQL is largely placeholder and mostly vibe coded.
+
+The exported json will likely need to be massaged before working with the application.
+
+I'll look at integrating SQL directly with the application next week.

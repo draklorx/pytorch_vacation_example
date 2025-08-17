@@ -10,14 +10,13 @@ class ChatModel(nn.Module):
         self.layer2 = nn.Linear(hidden_size, hidden_size)
         self.layer3 = nn.Linear(hidden_size, hidden_size)
         self.output = nn.Linear(hidden_size, output_size)
-        self.softmax = nn.Softmax(dim=1)
         
     def forward(self, x):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
-        x = self.output(x)
-        return self.softmax(x)
+        x = self.output(x)  # No softmax here!
+        return x
 
 
 def train(model, training, output):
@@ -45,8 +44,7 @@ def train(model, training, output):
         # Update weights
         optimizer.step()
         
-        if epoch % 100 == 0:
-            print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
+        print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
     
     # Save the trained model
     torch.save(model.state_dict(), 'model.pth')
