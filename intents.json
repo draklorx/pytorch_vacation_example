@@ -2,190 +2,79 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": [
-        "Hi",
-        "How are you",
-        "Is anyone there?",
-        "Hello",
-        "Good day",
-        "Whats up"
-      ],
+      "patterns": ["Hello", "Hi there", "Greetings", "Good evening", "Hey"],
       "responses": [
-        "Hello! Let's narrow down your vacation options. Do you want to start with the weather or an activity?",
-        "Good to see you! Do you have a preference for the weather or an activity?",
-        "Hello, there! Let's find your perfect vacation spot! Would you like to start with the weather or an activity?"
+        "Well met, traveler! Welcome to the Drunken Dragon Inn.",
+        "Ah, a new face! Pull up a chair and rest your weary feet.",
+        "Greetings, adventurer. What brings you to my humble tavern?"
       ],
       "context_set": ""
     },
     {
-      "tag": "goodbye",
+      "tag": "ask_drink",
       "patterns": [
-        "cya",
-        "See you later",
-        "Goodbye",
-        "I am Leaving",
-        "Have a Good day",
-        "bye",
-        "quit"
+        "What do you have to drink?",
+        "I'd like a drink",
+        "Ale please",
+        "Got any wine?",
+        "What's on tap?",
+        "Can I get a beer?"
       ],
-      "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
+      "responses": [
+        "We've got the finest dwarven ale, elven wine, and a mysterious brew I wouldn't recommend after midnight.",
+        "A pint of dwarven stout or a glass of elven mead, the choice is yours!",
+        "For the brave, I've got a flaming dragon whiskey — care to try?"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "ask_food",
+      "patterns": [
+        "What food do you serve?",
+        "I'd like some food",
+        "Got any meals?",
+        "What's for dinner?",
+        "I'm hungry"
+      ],
+      "responses": [
+        "We've roasted boar, stew thick enough to stand a spoon in, and bread fresh from the ovens.",
+        "You'll find no finer mutton stew this side of the mountains.",
+        "Hungry, eh? A platter of cheese and bread will keep you strong for your travels."
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "ask_gossip",
+      "patterns": [
+        "Heard any rumors?",
+        "What's the news?",
+        "Any gossip?",
+        "What's happening around here?",
+        "Tell me a story"
+      ],
+      "responses": [
+        "They say a dragon was spotted near the old ruins to the north... though I don't fancy seeing it myself.",
+        "Rumor has it the king's treasury has gone missing — and the thieves are hiding in plain sight.",
+        "Some say the forest spirits are restless again. Might be trouble for travelers."
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "farewell",
+      "patterns": [
+        "Goodbye",
+        "Farewell",
+        "I must be going",
+        "See you later",
+        "Thanks for the hospitality"
+      ],
+      "responses": [
+        "Safe travels, adventurer. May fortune favor you.",
+        "Until next time, traveler. The fire will be waiting for your return.",
+        "Go with the gods, and may your mug never run dry."
+      ],
       "context_set": "",
       "function": "end_conversation"
-    },
-    {
-      "tag": "thanks",
-      "patterns": [
-        "Thanks",
-        "Thank you",
-        "That's helpful",
-        "Awesome, thanks",
-        "Thanks for helping me"
-      ],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"],
-      "context_set": ""
-    },
-    {
-      "tag": "weather",
-      "patterns": [
-        "Let's start with the weather",
-        "I want to choose by weather",
-        "weather preference",
-        "I'm looking for a vacation based on weather",
-        "weather options",
-        "Let's look at weather.",
-        "I'd like to search by weather.",
-        "How about weather?",
-        "weather"
-      ],
-      "responses": [
-        "What kind of weather do you prefer for your vacation? Are you looking for something sunny or snowy?",
-        "Do you have a weather preference for your vacation? Would you like to go somewhere warm or mild?",
-        "Let's narrow down your vacation options by weather. Do you prefer a sunny or snowy destination?"
-      ],
-      "context_set": ""
-    },
-    {
-      "tag": "activity",
-      "patterns": [
-        "Let's start with an activity",
-        "I want to choose by activity",
-        "activity preference",
-        "I'm looking for a vacation based on activities",
-        "activity options",
-        "Let's look at activities.",
-        "I'd like to search by activity.",
-        "How about activities?",
-        "What kind of activities are there?",
-        "activity"
-      ],
-      "responses": [
-        "What kind of activities are you interested in for your vacation? Are you looking for adventure or relaxation?",
-        "Do you have a specific activity in mind for your vacation? Would you like something adventurous or relaxing?",
-        "Let's narrow down your vacation options by activity. Are you looking for adventure or relaxation?"
-      ],
-      "context_set": ""
-    },
-    {
-      "tag": "sunny",
-      "patterns": [
-        "I want to go somewhere sunny",
-        "I'm feeling sunny",
-        "I'm looking for somewhere warm",
-        "sunny vacation",
-        "somewhere warm",
-        "I'd love somewhere sunny",
-        "I'd like to go somewhere sunny.",
-        "How about sunny?",
-        "sunny"
-      ],
-      "responses": [
-        "Ready to escape this dreary weather?",
-        "A sunny vacation sounds great!"
-      ],
-      "context_set": "",
-      "function": "find_vacation_by_weather",
-      "function_args": {
-        "weather": "sunny"
-      }
-    },
-    {
-      "tag": "snowy",
-      "patterns": [
-        "I need to escape this heat",
-        "I'd love to go somewhere snowy",
-        "I'm looking for somewhere cold",
-        "snowy vacation",
-        "I need to cool off",
-        "I'm looking to cool down",
-        "somewhere cold",
-        "It's so hot outside, let's cool off.",
-        "I need to chill out",
-        "I could use a cool destination.",
-        "I've changed my mind. I want to go somewhere snowy",
-        "Let's go somewhere cold instead.",
-        "Let's go somewhere snowy.",
-        "snowy"
-      ],
-      "responses": [
-        "Ready to escape this heat?",
-        "A snowy vacation sounds great!"
-      ],
-      "context_set": "",
-      "function": "find_vacation_by_weather",
-      "function_args": {
-        "weather": "snowy"
-      }
-    },
-    {
-      "tag": "adventure",
-      "patterns": [
-        "I want an adventure",
-        "I'm looking for an adventure",
-        "adventure vacation",
-        "somewhere adventurous",
-        "Let's go on an adventure!",
-        "I want to do something adventurous",
-        "I'm in the mood for adventure",
-        "Let's have an adventure!",
-        "Let's go back to adventure.",
-        "Actually adventure.",
-        "I'd love an adventure.",
-        "How about an adventure?",
-        "adventure"
-      ],
-      "responses": [
-        "An adventure vacation sounds exciting!",
-        "Ready for an adventure?"
-      ],
-      "context_set": "",
-      "function": "find_vacation_by_activity",
-      "function_args": {
-        "activity": "adventure"
-      }
-    },
-    {
-      "tag": "relaxation",
-      "patterns": [
-        "I need to relax",
-        "I'm looking for a relaxing vacation",
-        "relaxation vacation",
-        "somewhere relaxing",
-        "What kind of relaxing activities are there?",
-        "Let's go somewhere relaxing",
-        "I want to do something relaxing",
-        "I'm in the mood for relaxation",
-        "Let's have a relaxing vacation!",
-        "relax"
-      ],
-      "responses": [
-        "A relaxing vacation sounds perfect! Here are some options:",
-        "Ready to unwind? Here are some peaceful destinations:"
-      ],
-      "context_set": "",
-      "function": "find_vacation_by_activity",
-      "function_args": {
-        "activity": "relaxation"
-      }
     }
   ]
 }
