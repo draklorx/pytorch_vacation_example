@@ -25,6 +25,9 @@ def train(model, training, output):
     X_train = torch.FloatTensor(training)
     y_train = torch.FloatTensor(output)
     
+    # Convert one-hot to class indices
+    y_train_indices = torch.argmax(y_train, dim=1)  # This converts [1,0,0] → 0, [0,1,0] → 1, etc.
+    
     # Define loss and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters())
@@ -36,7 +39,7 @@ def train(model, training, output):
         outputs = model(X_train)
         
         # Calculate loss and backward pass
-        loss = criterion(outputs, y_train)
+        loss = criterion(outputs, y_train_indices)  # ✅ Now using indices!
         loss.backward()
         
         # Update weights

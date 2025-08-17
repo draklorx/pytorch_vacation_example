@@ -21,8 +21,13 @@ model = ChatModel(input_size, hidden_size, output_size)
 
 try:
     model.load_state_dict(torch.load('model.pth'))
-    model.eval()  # Set to evaluation mode
-except:
+    model.eval()
+except FileNotFoundError:
+    print("No trained model found, training new model...")
+    train(model, training, output)
+except Exception as e:
+    print(f"Error loading model: {e}")
+    print("Training new model...")
     train(model, training, output)
 
 def execute_function(function_name, args=None, session_state=None, vacation_spots=None):
@@ -42,6 +47,12 @@ def execute_function(function_name, args=None, session_state=None, vacation_spot
 def end_conversation():
     print("Thank you for using the vacation chatbot. Have a great day!")
     exit()
+
+def write_exception(input, tag, exception_filename):
+    with open(exception_filename) as exception_file:
+        if input not in exception_file.read():
+            with open(exception_filename, 'a') as exception_file:
+                exception_file.write(f'{input}  (Predicted category: {tag})\n')
 
 def chat():
     with open("vacation_spots.json") as file:    
@@ -91,16 +102,11 @@ def chat():
                             print(f"{random.choice(responses)}")
             else:
                 print("Please rephrase it!")
+                exception_filename = 'exceptions.txt'
                 try:
-                    with open('exceptions.txt') as f:
-                        if inp not in f.read():
-                            with open('exceptions.txt', 'a') as f:
-                                f.write(f'{inp}  (Predicted category: {tag})\n')
+                    write_exception(inp, tag, exception_filename)
                 except:
-                    file = open('exceptions.txt', 'x')
-                    with open('exceptions.txt') as f:
-                        if inp not in f.read():
-                            with open('exceptions.txt', 'a') as f:
-                                f.write(f'{inp}  (Predicted category: {tag})\n')
+                    file = open(exception_filename, 'x').close()
+                    write_exception(inp, tag, exception_filename)
 
 chat()

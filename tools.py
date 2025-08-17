@@ -1,4 +1,3 @@
-from pydoc import doc
 import nltk
 import numpy
 from nltk.stem.lancaster import LancasterStemmer
@@ -19,7 +18,6 @@ def create_vector(input, vocabulary):
         # if the input word is in the vocabulary, set the corresponding index to 1 else 0
         vector.append(1 if word in input_words else 0)
 
-    print(len(vector), len(vocabulary))
     # return the bag of words as a numpy array
     return vector
 
